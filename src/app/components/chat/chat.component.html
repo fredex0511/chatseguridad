@@ -1,0 +1,53 @@
+<section class="content">
+  <div class="posts-detail">
+    <div class="conversaciones">
+      <div class="lista col-12">
+        <button
+          class="conversacion-item"
+          *ngFor="let conversation of filteredConversations; let i = index"
+          (click)="selectConversation(conversation, i)"
+          [ngStyle]="{'background-color': getBackgroundColor(i)}"
+        >
+          <img [src]="conversation.user_img || 'assets/images/avatar.png'" alt="User Image">
+          <div class="conversacion-info">
+            <span class="user-name">{{ conversation.user_name }}</span>
+          </div>
+          <div *ngIf="conversation.pending_messages > 0" class="pending-messages">
+            {{ conversation.pending_messages }}
+          </div>
+        </button>
+      </div>
+    </div>
+    <div class="conversacion">
+      <div *ngIf="selectedConversation === null" class="no-messages">
+        <p>Chat con Aranda</p>
+        <p>Comunícate con para quejas</p>
+      </div>
+      <div class="col-12 messages-container" *ngIf="selectedConversation != null">
+        <div class="conversacion-item" [ngStyle]="{'background-color': getBackgroundColor(selectedConversationIndex || 0)}">
+          <img [src]="selectedConversation.user_img || 'assets/images/avatar.png'" alt="User Image">
+          <div class="conversacion-info">
+            <span class="user-name">{{ selectedConversation.user_name }}</span>
+          </div>
+        </div>
+        <div class="messages" #messagesContainer>
+          <div *ngFor="let day of messages">
+            <div class="message-date">{{ day.date | date:'fullDate' }}</div>
+            <div *ngFor="let message of day.messages" [ngClass]="{'message-row': message.user === user_id, 'message-row-start': message.user !== user_id}">
+              <div class="message" [ngClass]="{'sent': message.user === user_id, 'received': message.user !== user_id}">
+                <p class="message-text">{{ message.message }}</p>
+                <p class="message-time">{{ message.time }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-message">
+          <input class="text-message" type="text" placeholder="Escribe un Mensaje" [(ngModel)]="newMessage" (keydown)="onKeyPress($event)">
+          <button class="btn-msg" (click)="sendMessage()">
+            <img src="assets/images/avion-de-papel.png" alt="Enviar Msg">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

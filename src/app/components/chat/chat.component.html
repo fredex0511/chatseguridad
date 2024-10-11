@@ -2,6 +2,9 @@
   <div class="posts-detail">
     <div class="conversaciones">
       <div class="lista col-12">
+        <button class="logout-btn" (click)="logout()">
+          Cerrar sesión
+        </button>
         <button
           class="conversacion-item"
           *ngFor="let conversation of filteredConversations; let i = index"

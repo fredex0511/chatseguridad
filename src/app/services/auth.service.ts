@@ -22,6 +22,10 @@ export class AuthService {
     });
   }
 
+  logout(): Observable<any> {
+    return this.http.post<any>(`${this.API_URL}logout`, {});
+  }
+
   profile(): Observable<any>{
     return this.http.get<any>(`${this.API_URL}profile`);
   }

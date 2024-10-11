@@ -82,6 +82,33 @@
     margin-right: 5%;
     border-bottom: solid 1px #ddd;
   }
+
+  .logout-btn {
+    display: flex;
+    padding: 10px 20px;
+    border: none;
+    justify-content: center;
+    cursor: pointer;
+    align-items: center;
+    width: 100%;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+.logout-btn:active {
+    background-color: #a93226;
+    transform: translateY(0);
+}
   
   .conversacion-info .user-name {
     font-weight: bold;
@@ -205,6 +232,14 @@
     background-color: #4dd384;
     border-radius: 15px;
     border: none;
+  }
+
+  .btn-msg img {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 5%;
+    border-bottom: solid 1px #ddd;
   }
   
   .checked-msg svg {
